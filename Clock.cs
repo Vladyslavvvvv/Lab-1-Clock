@@ -46,8 +46,15 @@ namespace Lab_1_Clock
 
         private void buttonSetTime_Click(object sender, EventArgs e)
         {
-            currentTime.SetTime(int.Parse(textBoxHour.Text), int.Parse(textBoxMinute.Text), int.Parse(textBoxSecond.Text));
-            UpdateTimeLabels();
+            if (!textBoxHour.Text.Any(char.IsLetter) && !textBoxMinute.Text.Any(char.IsLetter) && !textBoxSecond.Text.Any(char.IsLetter))
+            {
+                currentTime.SetTime(int.Parse(textBoxHour.Text), int.Parse(textBoxMinute.Text), int.Parse(textBoxSecond.Text));
+                UpdateTimeLabels();
+            }
+            else
+            {
+                MessageBox.Show("Enter numeric values ​​for hours, minutes, and seconds");
+            }
         }
     }
 
